@@ -1,1 +1,1 @@
-# java-automation-framework-bdd-api-ui
+mvn test -Dsurefire.suiteXmlFiles=testng-smoke.xml
