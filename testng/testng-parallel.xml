@@ -1,0 +1,35 @@
+<suite name="First Test" parallel="classes" thread-count="2" time-out="30000" verbose="1" >
+  <test name="Some Groups" >
+		<groups>
+			<run>
+				<include name="learning"></include>
+				<include name="ui"></include>
+			</run>
+		</groups>
+		<classes>
+			<class name="tests.testng_features.testDependsOn"></class>
+			<class name="tests.testng_features.TestExceptionTimeout"></class>
+			<class name="tests.testng_features.SeleniumDummyTest"></class>
+			<class name="tests.testng_features.ParameterTest"></class>
+			<class name="tests.testng_features.testSampleTestNGClass"></class>
+			<class name="tests.testng_features.testTestNgGroups"></class>
+		</classes>
+  </test>
+  <test name="Second Test">
+  	<groups>
+  		<run>
+  			<include name="learning"></include>
+  			<include name="ui"></include>
+  			<include name="selenium"></include>
+  			<include name="annotations"></include>
+  		</run>
+  	</groups>
+  			<classes>
+			<class name="tests.testng_features.testDependsOn"></class>
+			<class name="tests.testng_features.SeleniumDummyTest"></class>
+			<class name="tests.testng_features.TestExceptionTimeout"></class>
+			<class name="tests.testng_features.ParameterTest"></class>
+			<class name="tests.testng_features.testSampleTestNGClass"></class>
+		</classes>
+  </test>
+</suite>

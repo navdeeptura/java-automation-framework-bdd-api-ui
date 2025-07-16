@@ -1,4 +1,4 @@
-package tests;
+package tests.testng_features;
 
 import java.time.Duration;
 import org.openqa.selenium.WebDriver;

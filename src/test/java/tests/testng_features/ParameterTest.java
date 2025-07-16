@@ -1,4 +1,4 @@
-package tests;
+package tests.testng_features;
 
 
 import org.openqa.selenium.By;
@@ -12,9 +12,9 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class ParameterTest {
 	
-	WebDriver driver;
-	
-	@Test(groups = {"learning"}, invocationCount = 5, threadPoolSize = 2)
+	ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
+		
+	@Test(groups = {"learning"}, invocationCount = 5, threadPoolSize = 1)
 	@Parameters({"browser", "url", "username"})
 	public void parameterCheck(
 			@Optional("chrome") String browser, 

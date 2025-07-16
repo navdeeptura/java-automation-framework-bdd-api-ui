@@ -1,4 +1,4 @@
-package tests;
+package tests.testng_features;
 
 import java.time.Duration;
 
@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 
 
 public class SeleniumDummyTest extends BaseSeleniumTest{
-
+	
 	
 	@Test(priority = 2, groups = {"ui", "selenium", "learning"})
 	public void googleTitleTest() {

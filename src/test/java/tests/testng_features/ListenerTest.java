@@ -1,4 +1,4 @@
-package tests;
+package tests.testng_features;
 
 public class ListenerTest {
 
