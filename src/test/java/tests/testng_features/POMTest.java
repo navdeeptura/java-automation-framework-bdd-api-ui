@@ -2,21 +2,18 @@ package tests.testng_features;
 
 import java.time.Duration;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import pages.nopCommercePage;
 
-public class DataProviderTest extends BaseSeleniumTest{
-	
-	
-	
-	
+/**
+ * Test class leveraging Page Object Model (POM) to separate page logic from test flow.
+ * Verifies nopCommerce registration form validation using static data.
+ */
+
+public class POMTest extends BaseSeleniumTest{
+		
 	@Test
 	public void dataProviderTest() throws InterruptedException {
 		String url = "https://demo.nopcommerce.com/register?returnUrl=%2Fcomputers";		

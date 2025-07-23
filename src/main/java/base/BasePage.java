@@ -12,6 +12,18 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+
+/**
+ * Base class for all page objects, providing reusable WebDriver utilities such as:
+ * - Navigation and page title retrieval
+ * - Waits for visibility and clickability
+ * - Click, type, and getText operations
+ * - Dropdown selection
+ * - Element hover, scroll, and JavaScript click
+ * - Attribute fetching and element visibility check
+ */
+
+
 public class BasePage {
 	
 	protected WebDriver driver;

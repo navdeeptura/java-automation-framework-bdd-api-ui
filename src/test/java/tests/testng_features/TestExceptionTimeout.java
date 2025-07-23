@@ -4,6 +4,10 @@ package tests.testng_features;
 import org.testng.annotations.Test;
 import org.testng.internal.thread.ThreadTimeoutException;
 
+
+/**
+ * Demonstrates TestNG timeouts and expectedExceptions for handling long-running tests.
+ */
 public class TestExceptionTimeout {
 	
 	

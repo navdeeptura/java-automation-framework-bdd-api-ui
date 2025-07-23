@@ -6,6 +6,10 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
+/**
+ * Base class for Selenium tests providing WebDriver setup, teardown, and health check.
+ */
+
 public abstract class BaseSeleniumTest {
 
     protected WebDriver driver;

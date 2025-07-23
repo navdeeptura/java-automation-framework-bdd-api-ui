@@ -1,7 +1,7 @@
 
-<suite name="Parameter - Suite" verbose="1" >
+<suite name="Parameter - Suite" verbose="6" >
   <test name="Parameter Test" >
-  <parameter name="browser" value="edge"></parameter>
+  <parameter name="browser" value="chrome"></parameter>
   <parameter name="url" value="https://login.yahoo.com/"></parameter>
   <parameter name="username" value="nav@gmail.com"></parameter>
   

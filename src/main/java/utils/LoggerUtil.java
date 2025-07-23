@@ -5,10 +5,10 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.ThreadContext;
 
 /**
- * Provides a centralized utility to get Log4j2 Logger instances.
- * This eliminates repeated boilerplate and ensures consistent logging style.
- * Also supports contextual logging via MDC (Mapped Diagnostic Context).
+ * Utility class for centralized Log4j2 logging and context management.
  */
+
+
 public class LoggerUtil {
 
     /**

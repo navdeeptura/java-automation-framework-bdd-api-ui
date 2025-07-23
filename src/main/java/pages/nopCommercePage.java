@@ -4,6 +4,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import base.BasePage;
 
+
+/**
+ * Page Object Model for the nopCommerce registration page.
+ * Encapsulates actions and verifications related to user registration.
+ */
+
 public class nopCommercePage extends BasePage {
 	
 	private static final String url = "https://demo.nopcommerce.com/register?returnUrl=%2Fcomputers";

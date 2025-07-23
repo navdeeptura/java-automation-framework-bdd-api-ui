@@ -3,6 +3,10 @@ package tests.testng_features;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+/**
+ * Demonstrates TestNG method dependencies using dependsOnMethods annotation.
+ */
+
 public class testDependsOn {
 	
 	@Test(groups = {"learning"})

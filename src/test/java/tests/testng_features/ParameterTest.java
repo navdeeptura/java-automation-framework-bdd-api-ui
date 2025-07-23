@@ -8,11 +8,16 @@ import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
+import drivers.Driver;
+
+/**
+ * Test class demonstrating TestNG @Parameters and @Optional for runtime data injection.
+ * and also implement groups
+ */
 
 public class ParameterTest {
 	
-	ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
+	WebDriver driver;
 		
 	@Test(groups = {"learning"}, invocationCount = 5, threadPoolSize = 1)
 	@Parameters({"browser", "url", "username"})
@@ -22,11 +27,8 @@ public class ParameterTest {
 			@Optional("nonsence@gmail.com") String username
 			) throws InterruptedException {
 		
-		if (browser.equals("edge")){
-			driver = WebDriverManager.edgedriver().create();
-		} else if(browser.equals("chrome")){
-			driver = WebDriverManager.chromedriver().create();
-		}
+		Driver.initDriver(browser);
+		driver = Driver.getDriver();
 
 		driver.get(url);
 		WebElement userNameLocator = driver.findElement(By.id("login-username"));
@@ -34,7 +36,7 @@ public class ParameterTest {
 		userNameLocator.sendKeys(username);
 		
 		
-		driver.quit();
+		Driver.quitDriver();
 
 	}
 

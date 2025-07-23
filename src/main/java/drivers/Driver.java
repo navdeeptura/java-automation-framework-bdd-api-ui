@@ -2,6 +2,12 @@ package drivers;
 
 import org.openqa.selenium.WebDriver;
 
+
+/**
+ * Manages WebDriver instances using ThreadLocal for safe parallel test execution.
+ */
+
+
 public class Driver {
 	
 	public static final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
@@ -14,14 +20,15 @@ public class Driver {
 	}
 	
 	public static WebDriver getDriver() {
-		if (driver.get() == null) {
-			throw new IllegalStateException("Webdriver not initialied, Call initDriver()");
-		}
+//		if (driver.get() == null) {
+//			throw new IllegalStateException("Webdriver not initialied, Call initDriver()");
+//		}
 		return driver.get();
 	}
 	
 	public static void quitDriver() {
-		if (driver != null) {
+		 WebDriver webDriver = driver.get();
+		 if (webDriver != null) {
 			driver.get().quit();
 			driver.remove();
 		}

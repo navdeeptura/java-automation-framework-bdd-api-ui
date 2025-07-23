@@ -4,33 +4,57 @@ import java.time.Duration;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import drivers.Driver;
 
-public class SeleniumDummyTest extends BaseSeleniumTest{
+/**
+ * Sample Selenium test class using TestNG to validate basic Google UI functionality.
+ * Demonstrates grouped tests, priorities, and assertions.
+ * Add merged this with Listener testng xml file
+ */
+
+
+public class SeleniumDummyTest {
 	
+	WebDriver driver;
+	
+	@BeforeMethod
+	public void setUp() {
+		Driver.initDriver("chrome");
+		driver = Driver.getDriver();
+	}
+	
+	@AfterMethod
+	public void tearDown() {
+		Driver.quitDriver();
+	}
 	
 	@Test(priority = 2, groups = {"ui", "selenium", "learning"})
 	public void googleTitleTest() {
-		getDriver().get("https://www.google.com/");
-		Assert.assertEquals(getDriver().getTitle(), "Google");
+		driver.get("https://www.google.com/");
+		Assert.assertEquals(driver.getTitle(), "Google");
 	}
 	
 	@Test(priority = 2, groups = {"ui", "selenium", "learning"})
 	public void googleLogoTest() {
-		getDriver().get("https://www.google.com/");
+		driver.get("https://www.google.com/");
 		By logoID = By.cssSelector("svg.lnXdpd");
-		boolean logoStatus = getDriver().findElement(logoID).isDisplayed();
+		boolean logoStatus = driver.findElement(logoID).isDisplayed();
 		Assert.assertEquals(logoStatus, true);
 	}
 	
 	@Test(priority = 0, groups = {"ui", "selenium", "learning"}, enabled = false)
 	public void googleSearchTest() throws InterruptedException {
-		getDriver().get("https://www.google.com/");
+		driver.get("https://www.google.com/");
 		By textAreaLocator = By.xpath("//textarea[@id='APjFqb']");
-		WebElement textAreaElement = getDriver().findElement(textAreaLocator);
+		WebElement textAreaElement = driver.findElement(textAreaLocator);
 		Assert.assertEquals(textAreaElement.isEnabled(), true);
 		
 		textAreaElement.sendKeys("Navdeep Tura");
@@ -38,18 +62,19 @@ public class SeleniumDummyTest extends BaseSeleniumTest{
 		Thread.sleep(Duration.ofSeconds(30));
 		
 		String expectedTitle = "Navdeep Tura - Google Search";
-		Assert.assertEquals(getDriver().getTitle(), expectedTitle);
+		Assert.assertEquals(driver.getTitle(), expectedTitle);
 	}
 	
 	@Test(priority = 1, groups = {"ui", "selenium", "learning"})
 	public void googleStoreLink() {
-		getDriver().get("https://www.google.com/");
+		driver.get("https://www.google.com/");
 		By aboutLinkLocator = By.linkText("Store");
-		getDriver().findElement(aboutLinkLocator).click();
+		driver.findElement(aboutLinkLocator).click();
 		
 		String expectedAddMessage = "Google Store for Google Made Devices & Accessories";
-		String actualTitle = getDriver().getTitle();
+		String actualTitle = driver.getTitle();
 		Assert.assertEquals(actualTitle, expectedAddMessage, "Title Not Matching");
+		Assert.assertTrue(false);
 	}
 
 }

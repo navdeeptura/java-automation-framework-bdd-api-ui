@@ -5,6 +5,12 @@ import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.safari.SafariOptions;
 
+
+/**
+ * Provides browser-specific WebDriver options for Chrome, Edge, Firefox, and Safari.
+ */
+
+
 public class DriverOptions {
 	
 	public static ChromeOptions getChromeOptions() {

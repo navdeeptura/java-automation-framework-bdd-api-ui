@@ -8,6 +8,12 @@ import org.openqa.selenium.safari.SafariDriver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
+
+/**
+ * Factory class to create WebDriver instances based on the specified browser name.
+ */
+
+
 public class DriverFactory {
 	
 	public static WebDriver createDriver(String browser) {

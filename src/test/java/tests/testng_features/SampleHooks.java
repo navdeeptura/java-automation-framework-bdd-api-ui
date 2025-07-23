@@ -5,6 +5,10 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeGroups;
 import org.testng.annotations.BeforeSuite;
 
+/**
+ * TestNG hook class demonstrating suite-level and group-level setup and teardown.
+ */
+
 public class SampleHooks {
 	
 	@BeforeSuite

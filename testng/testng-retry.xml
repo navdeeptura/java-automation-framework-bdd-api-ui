@@ -1,0 +1,13 @@
+
+<suite name="Retry Listener Suite" parallel="classes" thread-count="2" verbose="2" >
+
+	<listeners>
+	<listener class-name="utils.RetryTransform"></listener>
+	</listeners>
+	  <test name="Regression Tests">
+	  <classes>
+	  <class name="tests.testng_features.RetryListenerTest"></class>
+	  </classes>
+	     
+	  </test>
+</suite>

@@ -1,0 +1,13 @@
+
+<suite name="Regression Suite" parallel="classes" thread-count="2" verbose="2" >
+
+	<listeners>
+	<listener class-name="utils.ScreenshotOnFailure"></listener>
+	</listeners>
+	  <test name="Regression Tests">
+	  <classes>
+	  <class name="tests.testng_features.SeleniumDummyTest"></class>
+	  </classes>
+	     
+	  </test>
+</suite>

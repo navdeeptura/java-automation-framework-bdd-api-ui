@@ -3,6 +3,10 @@ package tests.testng_features;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+/**
+ * Demonstrates usage of TestNG groups by running multiple grouped test methods 
+ * using a common setup.
+ */
 
 public class testTestNgGroups extends BaseSeleniumTest {
 	
