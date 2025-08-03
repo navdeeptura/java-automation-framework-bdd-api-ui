@@ -21,7 +21,7 @@ public class Driver {
 	
 	public static WebDriver getDriver() {
 //		if (driver.get() == null) {
-//			throw new IllegalStateException("Webdriver not initialied, Call initDriver()");
+//			throw new IllegalStateException("Webdriver not initialed, Call initDriver()");
 //		}
 		return driver.get();
 	}

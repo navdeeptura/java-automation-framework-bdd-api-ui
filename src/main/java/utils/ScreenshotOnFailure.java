@@ -11,7 +11,6 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestListener;
-import org.testng.ITestNGMethod;
 import org.testng.ITestResult;
 
 import drivers.Driver;
@@ -36,6 +35,7 @@ public class ScreenshotOnFailure implements ITestListener {
 		String className = result.getTestClass().getName();
 		String testMethodName = result.getName();
 		String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+
 		String fileName = className + testMethodName + timestamp + ".png";
 		Path screenShotPath = Path.of("test-output", "screenshots", fileName);
 		

@@ -6,7 +6,7 @@
 	</listeners>
 	  <test name="Regression Tests">
 	  <classes>
-	  <class name="tests.testng_features.RetryListenerTest"></class>
+	  <class name="TestNG.RetryListenerTest"></class>
 	  </classes>
 	     
 	  </test>
