@@ -33,14 +33,13 @@ public class PracticeFormsTest extends BaseDemoQATest{
     }
 
     @Test
-    public void chainFillPracticeForm(){
+    public void chainFillPracticeForm() throws InterruptedException {
         PracticeFormPage practiceFP = homePage.clickForms().clickPracticeForm();
         practiceFP.enterFirstName("First").enterLastName("Last")
                 .enterUserEmail("Email").clickOthers()
                 .enterMobile("9999999999");
-
+//        Thread.sleep(10000);
         Assert.assertFalse(practiceFP.isFemaleSelected());
         Assert.assertTrue(practiceFP.isOthersSelected());
-
     }
 }

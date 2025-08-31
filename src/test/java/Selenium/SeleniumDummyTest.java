@@ -73,7 +73,7 @@ public class SeleniumDummyTest {
 		String expectedAddMessage = "Google Store for Google Made Devices & Accessories";
 		String actualTitle = driver.getTitle();
 		Assert.assertEquals(actualTitle, expectedAddMessage, "Title Not Matching");
-		Assert.assertTrue(false);
+		Assert.assertTrue(false); // intentionally failing
 	}
 
 }

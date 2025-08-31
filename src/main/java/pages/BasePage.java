@@ -20,7 +20,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  */
 
 
-public class BasePage {
+public abstract class BasePage {
 	
 	protected WebDriver driver;
 	protected WebDriverWait wait;
@@ -34,14 +34,15 @@ public class BasePage {
 		return driver.getTitle();
 	}
 	
-	public void browseToPage(String url) {
+	public void navigateTo(String url) {
 		driver.get(url);
 		waitForPageLoad();
 	}
 
 	public String getURL(){ return driver.getCurrentUrl(); }
 
-	public WebElement find(By locator){
+	// === FIND Element ===
+	protected WebElement find(By locator){
 		return driver.findElement(locator);
 	}
 
@@ -54,38 +55,24 @@ public class BasePage {
         return wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 
-	protected WebElement waitPresenceOfElement(By locator){
+	protected WebElement waitForPresence(By locator){
 		return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
 	}
 
-	protected void waitForPageLoad() {
-		wait.until(
-				driver -> ((JavascriptExecutor) driver)
-						.executeScript("return document.readyState").equals("complete")
-		);
+	protected boolean waitForPageLoad() {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		String state = js.executeScript("return document.readyState").toString();
+		return state.equals("complete");
 	}
 
 
-	// ==== ACTION UTILITIES ====
+	// ==== Basic Actions ====
 	protected void click(By locator) {
-		try {
-			scrollToElementPresenceWait(locator);
-			waitForClickable(locator).click();
-		} catch (ElementNotInteractableException | TimeoutException e) {
-			clickJS(locator);
-		}
-	}
-
-	protected void clickJS(By locator) {
-		WebElement element = waitPresenceOfElement(locator);
-		scrollToElementNoWait(locator);
-		JavascriptExecutor executor = (JavascriptExecutor) driver;
-		executor.executeScript("arguments[0].click();", element);
+		waitForClickable(locator).click();
 	}
 	
 	protected void type(By locator, String text) {
-		WebElement element = waitPresenceOfElement(locator);
-		scrollToElementNoWait(locator);
+		WebElement element = waitForPresence(locator);
 		element.clear();
 		element.sendKeys(text);
 	}
@@ -98,49 +85,17 @@ public class BasePage {
 		return waitForVisibility(locator).getAttribute(attribute);
 	}
 	
-	protected boolean isElementDisplayed(By locator) {
+	protected boolean isDisplayed(By locator) {
 		try{
-			return wait.until(ExpectedConditions.visibilityOfElementLocated(locator)).isDisplayed();
+			return waitForVisibility(locator).isDisplayed();
 		} catch (TimeoutException | NoSuchElementException e){
 			return false;
 		}
 	}
 
 	// ==== DROPDOWN HANDLING ====
-    protected void selectByVisibleText(By locator, String visibleText) {
+    protected void selectByVisibleText(By locator, String text) {
         WebElement dropdown = waitForVisibility(locator);
-        new Select(dropdown).selectByVisibleText(visibleText);
+        new Select(dropdown).selectByVisibleText(text);
     }
-
-
-	// ==== ADVANCED ACTIONS ====
-	protected void hoverOver(By locator) {
-    	WebElement element = waitPresenceOfElement(locator);
-    	new Actions(driver).moveToElement(element).perform();
-    }
-    
-    protected void scrollToElement(By locator) {
-    	WebElement element = waitForVisibility(locator);
-    	((JavascriptExecutor) driver).executeScript(
-				"arguments[0].scrollIntoView(true);", element);
-    }
-
-	protected void scrollToElementNoWait(By locator) {
-		((JavascriptExecutor) driver).executeScript(
-				"arguments[0].scrollIntoView(true);", find(locator));
-	}
-
-	protected void scrollToElementPresenceWait(By locator) {
-		WebElement element = waitPresenceOfElement(locator);
-		((JavascriptExecutor) driver).executeScript(
-				"arguments[0].scrollIntoView(true);", element);
-	}
-
-	public void delay(int milliseconds){
-		try{
-			Thread.sleep(milliseconds);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-	}
 }

@@ -41,7 +41,6 @@ public class ScreenshotTest {
 	@Test
 	public void takeScreenshot() {
 		driver.get("https://mvnrepository.com/artifact/commons-io/commons-io/2.20.0");
-		Assert.assertEquals(true, false);
+        Assert.assertTrue(false); // intentionally failing to capture screenshot
 	}
-
 }

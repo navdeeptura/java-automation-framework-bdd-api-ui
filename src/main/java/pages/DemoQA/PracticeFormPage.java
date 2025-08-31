@@ -2,8 +2,10 @@ package pages.DemoQA;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import pages.BasePage;
+import utils.JSUtil;
 import utils.PropertiesReader;
 
 public class PracticeFormPage extends BasePage {
@@ -43,12 +45,14 @@ public class PracticeFormPage extends BasePage {
     }
 
     public PracticeFormPage clickMale(){
-        clickJS(maleRadioButtonLocator);
+        WebElement el = find(maleRadioButtonLocator);
+        JSUtil.jsClick(driver, el);
         return this;
     }
 
     public PracticeFormPage clickFemale(){
-        click(femaleRadioButtonLocator);
+        WebElement el = find(femaleRadioButtonLocator);
+        JSUtil.jsClick(driver, el);
         return this;
     }
 
@@ -57,7 +61,9 @@ public class PracticeFormPage extends BasePage {
     }
 
     public PracticeFormPage clickOthers(){
-        click(otherRadioButtonLocator);
+        WebElement el = find(otherRadioButtonLocator);
+//        JSUtil.scrollIntoView(driver, el);
+        JSUtil.jsClick(driver, el);
         return this;
     }
 

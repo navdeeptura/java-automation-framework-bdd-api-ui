@@ -3,6 +3,7 @@ package pages.DemoQA;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import pages.BasePage;
+import utils.JSUtil;
 
 public class HomePage extends BasePage {
 
@@ -21,11 +22,12 @@ public class HomePage extends BasePage {
     }
 
     public ElementsPage clickElements(){
-        click(elementsLocator);
+        JSUtil.jsClick(driver, find(elementsLocator));
         return new ElementsPage(driver);
     }
 
     public FormsPage clickForms(){
+        JSUtil.scrollIntoView(driver, find(formsLocator));
         click(formsLocator);
         return new FormsPage(driver);
     }

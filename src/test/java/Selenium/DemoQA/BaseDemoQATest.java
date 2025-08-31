@@ -16,12 +16,11 @@ public class BaseDemoQATest {
         Driver.initDriver("chrome");
         WebDriver driver = Driver.getDriver();
         homePage = new HomePage(driver);
-        homePage.browseToPage(DEMOQA_URL);
+        homePage.navigateTo(DEMOQA_URL);
     }
 
     @AfterMethod
     public void tearDown(){
-        homePage.delay(5000);
         Driver.quitDriver();
     }
 }
