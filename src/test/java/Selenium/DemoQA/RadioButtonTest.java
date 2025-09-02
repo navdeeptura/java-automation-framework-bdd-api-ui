@@ -5,13 +5,13 @@ import org.testng.annotations.Test;
 import pages.DemoQA.FormsPage;
 import pages.DemoQA.PracticeFormPage;
 
-public class PracticeFormsTest extends BaseDemoQATest{
+public class RadioButtonTest extends BaseDemoQATest{
 
     private String HOME_PAGE_TITLE = "DEMOQA";
     private String URL = "https://demoqa.com/forms";
     private String PRACTICE_FORM_URL = "https://demoqa.com/automation-practice-form";
 
-    @Test(enabled = false)
+    @Test
     public void verifyFormsURL(){
         Assert.assertEquals(homePage.getPageTitle(), HOME_PAGE_TITLE);
         FormsPage formsPage = homePage.clickForms();
@@ -29,11 +29,11 @@ public class PracticeFormsTest extends BaseDemoQATest{
         practiceFormPage.enterUserEmail("test@gmail.com");
         practiceFormPage.clickFemale();
         practiceFormPage.enterMobile("9998882222");
-//        practiceFormPage.enterSubjects("Math");
+        Assert.assertTrue(practiceFormPage.isFemaleSelected());
     }
 
     @Test
-    public void chainFillPracticeForm() throws InterruptedException {
+    public void isRadioButtonSelectedTest() {
         PracticeFormPage practiceFP = homePage.clickForms().clickPracticeForm();
         practiceFP.enterFirstName("First").enterLastName("Last")
                 .enterUserEmail("Email").clickOthers()

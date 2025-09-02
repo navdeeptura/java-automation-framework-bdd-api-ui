@@ -4,8 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import pages.BasePage;
-import utils.JSUtil;
+import base.BasePage;
+import utils.JavaScriptUtil;
 import utils.PropertiesReader;
 
 public class PracticeFormPage extends BasePage {
@@ -19,6 +19,11 @@ public class PracticeFormPage extends BasePage {
     private By otherRadioButtonLocator = By.id("gender-radio-3");
     private By mobileNumberLocator = By.id("userNumber");
     private By subjectsLocator = By.id("subjectsContainer");
+
+    private By sportsCheckBoxLocator = By.id("hobbies-checkbox-1");
+    private By readingCheckBoxLocator = By.id("hobbies-checkbox-2");
+    private By musicCheckBoxLocator = By.id("hobbies-checkbox-3");
+
 
 
     public PracticeFormPage(WebDriver driver) {
@@ -46,13 +51,13 @@ public class PracticeFormPage extends BasePage {
 
     public PracticeFormPage clickMale(){
         WebElement el = find(maleRadioButtonLocator);
-        JSUtil.jsClick(driver, el);
+        JavaScriptUtil.jsClick(driver, el);
         return this;
     }
 
     public PracticeFormPage clickFemale(){
         WebElement el = find(femaleRadioButtonLocator);
-        JSUtil.jsClick(driver, el);
+        JavaScriptUtil.jsClick(driver, el);
         return this;
     }
 
@@ -62,8 +67,7 @@ public class PracticeFormPage extends BasePage {
 
     public PracticeFormPage clickOthers(){
         WebElement el = find(otherRadioButtonLocator);
-//        JSUtil.scrollIntoView(driver, el);
-        JSUtil.jsClick(driver, el);
+        JavaScriptUtil.jsClick(driver, el);
         return this;
     }
 
@@ -81,17 +85,66 @@ public class PracticeFormPage extends BasePage {
         return this;
     }
 
+    public boolean isSportsCheckboxSelected(){
+        WebElement element = find(sportsCheckBoxLocator);
+        return element.isSelected();
+    }
 
+    public void clickSportsCheckBox(){
+        WebElement element = find(sportsCheckBoxLocator);
+        JavaScriptUtil.scrollIntoView(driver, element);
+        if (!isSportsCheckboxSelected()) {
+            JavaScriptUtil.jsClick(driver, element);
+        }
+    }
 
+    public void unclickSportsCheckBox(){
+        WebElement element = find(sportsCheckBoxLocator);
+        JavaScriptUtil.scrollIntoView(driver, element);
+        if (element.isSelected()){
+            JavaScriptUtil.jsClick(driver, element);
+        }
+    }
 
+    public boolean isReadingCheckboxSelected(){
+        WebElement element = find(readingCheckBoxLocator);
+        return element.isSelected();
+    }
 
+    public void clickReadingCheckBox(){
+        WebElement element = find(readingCheckBoxLocator);
+        JavaScriptUtil.scrollIntoView(driver, element);
+        if (!isReadingCheckboxSelected()) {
+            JavaScriptUtil.jsClick(driver, element);
+        }
+    }
 
+    public void unclickReadingCheckBox(){
+        WebElement element = find(readingCheckBoxLocator);
+        JavaScriptUtil.scrollIntoView(driver, element);
+        if (element.isSelected()){
+            JavaScriptUtil.jsClick(driver, element);
+        }
+    }
 
+    public boolean isMusicCheckboxSelected(){
+        WebElement element = find(musicCheckBoxLocator);
+        return element.isSelected();
+    }
 
+    public void clickMusicCheckBox(){
+        WebElement element = find(musicCheckBoxLocator);
+        JavaScriptUtil.scrollIntoView(driver, element);
+        if (!isReadingCheckboxSelected()) {
+            JavaScriptUtil.jsClick(driver, element);
+        }
+    }
 
-
-
-
-
-
+    public void unclickMusicCheckBox(){
+        WebElement element = find(musicCheckBoxLocator);
+        JavaScriptUtil.scrollIntoView(driver, element);
+        if (element.isSelected()){
+            JavaScriptUtil.jsClick(driver, element);
+        }
+    }
 }

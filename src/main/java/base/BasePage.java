@@ -1,9 +1,8 @@
-package pages;
+package base;
 
 import java.time.Duration;
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -20,8 +19,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  */
 
 
-public abstract class BasePage {
-	
+public class BasePage {
+
 	protected WebDriver driver;
 	protected WebDriverWait wait;
 	
@@ -97,5 +96,13 @@ public abstract class BasePage {
     protected void selectByVisibleText(By locator, String text) {
         WebElement dropdown = waitForVisibility(locator);
         new Select(dropdown).selectByVisibleText(text);
+    }
+
+	public static void delay(int milliseconds){
+		try{
+			Thread.sleep(milliseconds);
+		} catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
